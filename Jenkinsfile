@@ -5,10 +5,23 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         }
     stages {
-        stage('build') {
+        stage('build image') {
             steps {
                 sh 'packer build image.json'
             }
-        }
+        },
+        stage('Infrastructure plan') {
+            steps {
+			'''
+                sh 'terraform init'
+				sh 'terraform plan'
+			'''	
+            }
+        },
+        stage('Infrastructure deploy') {
+            steps {
+                sh 'terraform apply --auto-approve'
+            }
+        }				
     }
 }
