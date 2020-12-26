@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'packer build image.json'
+                sh 'sudo packer build image.json'
             }
         }
     }
