@@ -10,11 +10,6 @@
           yum:
             name: nginx
             state: latest
-        - name: Copy static files
-          copy:
-            src: "index.html"
-            dest: "/usr/share/nginx/html/index.html"
-            mode: 0644   
         - name: start nginx
           service:
             name: nginx
