@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'docker run hashicorp/packer:light build image.json'
+                sh 'sudo docker run hashicorp/packer:light build image.json'
             }
         }
     }
