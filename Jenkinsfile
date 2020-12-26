@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'sudo docker container run -it hashicorp/packer build image.json'
+                sh 'docker run -it --mount type=bind,source=image.json,target=/mnt/image.json hashicorp/packer:latest build /mnt/image.json'
             }
         }
     }
