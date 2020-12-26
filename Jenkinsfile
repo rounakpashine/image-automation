@@ -9,15 +9,15 @@ pipeline {
             steps {
                 sh 'packer build image.json'
             }
-        },
+        }
         stage('Infrastructure plan') {
             steps {
-			'''
+		'''
                 sh 'terraform init'
-				sh 'terraform plan'
-			'''	
+		sh 'terraform plan'
+	        '''	
             }
-        },
+        }
         stage('Infrastructure deploy') {
             steps {
                 sh 'terraform apply --auto-approve'
