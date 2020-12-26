@@ -12,10 +12,8 @@ pipeline {
         }
         stage('Infrastructure plan') {
             steps {
-		'''
-			terraform init
-			terraform plan
-	        '''	
+                sh 'terraform init'
+                sh 'terraform plan'		
             }
         }
         stage('Infrastructure deploy') {
