@@ -17,7 +17,7 @@ data "aws_ami" "ec2-ami" {
 
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ec2-ami.id
-  instance_type = "t3.micro"
+  instance_type = "t1.medium"
 
   tags = {
     Name = "automation"
