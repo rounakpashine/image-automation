@@ -5,7 +5,7 @@ pipeline {
             AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
             }
         parameters {
-             choice(name: 'Terraform', choices: ['Apply', 'Destroy'], description: 'Choose Apply for Infrastructure deploy and Destroy for Infrastructure destroy')
+             choice(name: 'Terraform', choices: ['Apply', 'Destroy'], description: 'Apply for tf apply, and Destroy for tf destroy')
         }    
 
         stages {
