@@ -9,19 +9,19 @@ pipeline {
         }    
 
         stages {
-            stage('packer inspect') {
+            stage('pkr inspect') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
                     sh 'packer inspect image.json'
                 }
             }
-            stage('packer validate') {
+            stage('pkr validate') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
                     sh 'packer validate image.json'
                 }
             }                
-            stage('packer build') {
+            stage('pkr build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
                     sh 'echo "packer build image.json"'
@@ -54,7 +54,7 @@ pipeline {
             stage('tf checkov') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo docker run -t -v /user/tf:/tf bridgecrew/checkov -d /tf'
+                    sh 'sudo docker run -t -v "$(pwd):/tf" bridgecrew/checkov -d /tf'
                 }
             }                 
             stage('tf plan') {
