@@ -30,7 +30,12 @@ pipeline {
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'brew install tfsec'	
+                    sh 'git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew'
+                    sh 'mkdir ~/.linuxbrew/bin'
+                    sh 'ln -s ../Homebrew/bin/brew ~/.linuxbrew/bin'
+                    sh 'eval $(~/.linuxbrew/bin/brew shellenv)'
+                    sh 'brew install tfsec'
+                    sh 'brew install tflint'
                 }
             }                
             stage('tf apply') {
