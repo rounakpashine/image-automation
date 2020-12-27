@@ -18,3 +18,9 @@
           service:
             name: nginx
             enabled: yes
+        - name: chmod for /usr/share/nginx/html/
+          file:
+            path: /usr/share/nginx/html/
+            state: directory
+            mode: '777'
+            recurse: yes
