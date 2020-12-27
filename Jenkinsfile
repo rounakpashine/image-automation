@@ -30,7 +30,7 @@ pipeline {
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'tfsec .'	
+                    sh 'docker -v'	
                 }
             }                
             stage('tf apply') {
