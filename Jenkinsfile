@@ -30,7 +30,7 @@ pipeline {
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'yum install docker -y'
+                    sh 'sudo yum install docker -y'
                 }
             }                
             stage('tf apply') {
