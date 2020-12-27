@@ -9,6 +9,18 @@ pipeline {
         }    
 
         stages {
+            stage('packer inspect') {
+                when { expression { return params.Terraform == 'Apply'} }       
+                steps {
+                    sh 'packer inspect image.json'
+                }
+            }
+            stage('packer validate') {
+                when { expression { return params.Terraform == 'Apply'} }       
+                steps {
+                    sh 'packer validate image.json'
+                }
+            }                
             stage('packer build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
