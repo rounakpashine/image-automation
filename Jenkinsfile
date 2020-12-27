@@ -10,26 +10,26 @@ pipeline {
 
     stages {
         stage('build image') {
-            when { expression { params.RELEASE } }            
+            when ${params.Terraform} = 'Apply'           
             steps {
                 sh 'packer build image.json'
             }
         }
         stage('Infrastructure plan') {
-            when { expression { params.RELEASE } }            
+            when ${params.Terraform} = 'Apply'                
             steps {
                 sh 'terraform init'
                 sh 'terraform plan'		
             }
         }
         stage('Infrastructure deploy') {
-            when { expression { params.RELEASE } }            
+            when ${params.Terraform} = 'Apply'               
             steps {
                 sh 'terraform apply --auto-approve'
             }
         }    
         stage('Infrastructure destroy') {
-            when { expression { !params.RELEASE } }            
+            when ${params.Terraform} = 'Destroy'               
             steps {
                 sh 'terraform destroy --auto-approve'
             }            
