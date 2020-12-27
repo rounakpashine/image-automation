@@ -21,20 +21,18 @@ pipeline {
                     sh 'terraform init'
                     sh 'terraform plan'		
                 }
-            }   
-            stage('Approval') {
-                when { expression { return params.Terraform == 'Apply'} }
-                input { message "Are you sure, you want to Destroy?" }                    
-            }                 
+            }                
             stage('Infrastructure deploy') {
                 when { expression { return params.Terraform == 'Apply'} }                       
-                steps {                        
+                steps {
+                    input 'Are you sure, you want to Apply?'    
                     sh 'terraform apply --auto-approve'
                 }                    
             }                
             stage('Infrastructure destroy') {
                 when { expression { return params.Terraform == 'Destroy'} }                 
-                steps {                         
+                steps {
+                    input 'Are you sure, you want to Destroy?'                        
                     sh 'terraform destroy --auto-approve'
                 }                   
             }				
