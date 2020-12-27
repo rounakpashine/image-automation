@@ -10,7 +10,7 @@ pipeline {
 
     stages {
         stage('build image') {
-            when { expression {params.Terraform} = 'Apply'}         
+            when { expression { return params.Terraform} == 'Apply'} }       
             steps {
                 sh 'packer build image.json'
             }
