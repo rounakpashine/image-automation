@@ -21,6 +21,18 @@ pipeline {
                     sh 'terraform init'	
                 }
             }
+            stage('tf validate') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
+                    sh 'terraform validate'		
+                }
+            }
+            stage('tf lint') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
+                    sh 'sudo docker run --rm -v $(pwd):/data -t wata727/tflint'		
+                }
+            }                 
             stage('tf plan') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
@@ -30,8 +42,6 @@ pipeline {
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo systemctl start docker'
-                    sh 'sudo systemctl enable docker'
                     sh 'sudo docker run --rm -i -v "$(pwd):/src" liamg/tfsec /src'
                 }
             }                
