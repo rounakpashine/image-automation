@@ -21,16 +21,16 @@
 	"sudo yum install python-pip -y",
         "sudo pip install ansible"
        ]
-    },
-    {
-      "type": "file",
-      "source": "index.html",
-      "destination": ""
-    },	  
+    },  
     {
       "type": "ansible-local",
       "playbook_file": "ansible/nginx.yaml"
     },
+    {
+      "type": "file",
+      "source": "index.html",
+      "destination": "usr/share/nginx/html/index.html"
+    },	  
     {
       "type": "shell",
       "inline": [
