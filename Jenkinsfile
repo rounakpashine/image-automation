@@ -30,8 +30,7 @@ pipeline {
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'brew install tfsec'
-                    sh 'brew install tflint'
+                    sh 'yum install docker -y'
                 }
             }                
             stage('tf apply') {
