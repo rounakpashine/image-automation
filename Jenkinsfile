@@ -12,7 +12,7 @@ pipeline {
             stage('packer build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'echo "no more packer"'
+                    sh 'packer build .'
                 }
             }
             stage('tf init') {
@@ -32,19 +32,19 @@ pipeline {
                 steps {
                     sh 'sudo docker run --rm -v $(pwd):/data -t wata727/tflint'		
                 }
-            }                 
-            stage('tf plan') {
-                when { expression { return params.Terraform == 'Apply'} }              
-                steps {
-                    sh 'terraform plan'		
-                }
             }
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
                     sh 'sudo docker run --rm -i -v "$(pwd):/src" liamg/tfsec /src'
                 }
-            }                
+            }                 
+            stage('tf plan') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
+                    sh 'terraform plan'		
+                }
+            }               
             stage('tf apply') {
                 when { expression { return params.Terraform == 'Apply'} }                       
                 steps {
