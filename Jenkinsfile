@@ -27,6 +27,7 @@ pipeline {
             steps {
                 sh 'terraform apply --auto-approve'
             }
+        }    
         stage('Infrastructure destroy') {
             when { expression { !params.RELEASE } }            
             steps {
@@ -34,5 +35,4 @@ pipeline {
             }            
         }				
     }
-  }
 }
