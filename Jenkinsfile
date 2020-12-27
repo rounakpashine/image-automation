@@ -24,7 +24,7 @@ pipeline {
             stage('packer build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'packer build image.json'
+                    sh 'echo "packer build image.json"'
                 }
             }
             stage('tf init') {
@@ -49,6 +49,12 @@ pipeline {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
                     sh 'sudo docker run --rm -i -v "$(pwd):/src" liamg/tfsec /src'
+                }
+            }
+            stage('tf checkov') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
+                    sh 'sudo docker run -t -v /user/tf:/tf bridgecrew/checkov -d /tf'
                 }
             }                 
             stage('tf plan') {
