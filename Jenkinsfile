@@ -23,15 +23,15 @@ pipeline {
                 }
             }    
             stage('Infrastructure deploy') {
-                input { message "Are you sure, you want to Apply?" } 
-                when { expression { return params.Terraform == 'Apply'} }             
+                when { expression { return params.Terraform == 'Apply'} }   
+                input { message "Are you sure, you want to Apply?" }                     
                 steps {
                     sh 'terraform apply --auto-approve'
                 }
             }    
             stage('Infrastructure destroy') {
-                input { message "Are you sure, you want to Destroy?" }
-                when { expression { return params.Terraform == 'Destroy'} }               
+                when { expression { return params.Terraform == 'Destroy'} } 
+                input { message "Are you sure, you want to Destroy?" }                    
                 steps {
                     sh 'terraform destroy --auto-approve'
                 }            
