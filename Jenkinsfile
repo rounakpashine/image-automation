@@ -9,30 +9,30 @@ pipeline {
         }    
 
         stages {
-            stage('build image') {
+            stage('packer build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
                     sh 'packer build image.json'
                 }
             }
-            stage('Infrastructure plan') {
+            stage('tf init & plan') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
                     sh 'terraform init'
                     sh 'terraform plan'		
                 }
             }                
-            stage('Infrastructure deploy') {
+            stage('tf apply') {
                 when { expression { return params.Terraform == 'Apply'} }                       
                 steps {
-                    input 'Are you sure, you want to Apply?'    
+                    input 'Are you sure, you want to Apply this plan?'    
                     sh 'terraform apply --auto-approve'
                 }                    
             }                
-            stage('Infrastructure destroy') {
+            stage('tf destroy') {
                 when { expression { return params.Terraform == 'Destroy'} }                 
                 steps {
-                    input 'Are you sure, you want to Destroy?'                        
+                    input 'Are you sure, you want to Destroy this plan?'                      
                     sh 'terraform destroy --auto-approve'
                 }                   
             }				
