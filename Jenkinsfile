@@ -34,8 +34,6 @@ pipeline {
                     sh 'mkdir ~/.linuxbrew/bin'
                     sh 'ln -s ../Homebrew/bin/brew ~/.linuxbrew/bin'
                     sh 'eval $(~/.linuxbrew/bin/brew shellenv)'
-                    sh 'brew install tfsec'
-                    sh 'brew install tflint'
                 }
             }                
             stage('tf apply') {
