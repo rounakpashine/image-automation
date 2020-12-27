@@ -12,7 +12,7 @@ pipeline {
             stage('packer build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'packer build .'
+                    sh 'packer build image.json'
                 }
             }
             stage('tf init') {
