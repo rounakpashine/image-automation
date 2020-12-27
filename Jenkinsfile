@@ -15,11 +15,22 @@ pipeline {
                     sh 'packer build image.json'
                 }
             }
-            stage('tf init & plan') {
+            stage('tf init') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'terraform init'
+                    sh 'terraform init'	
+                }
+            }
+            stage('tf plan') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
                     sh 'terraform plan'		
+                }
+            }
+            stage('tf sec') {
+                when { expression { return params.Terraform == 'Apply'} }              
+                steps {
+                    sh 'sudo docker run --rm -it -v "$(pwd):/src" liamg/tfsec /src'	
                 }
             }                
             stage('tf apply') {
