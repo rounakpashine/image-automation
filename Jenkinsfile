@@ -24,7 +24,7 @@ pipeline {
             stage('pkr build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'echo "packer build image.json"'
+                    sh 'packer build image.json'
                 }
             }
             stage('tf init') {
