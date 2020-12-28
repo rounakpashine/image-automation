@@ -17,11 +17,6 @@
     {
       "type": "ansible",
       "playbook_file": "ansible/nginx.yaml"
-    },
-    {
-      "type": "file",
-      "source": "index.html",
-      "destination": "/usr/share/nginx/html/index.html"
     },	  
     {
       "type": "shell",
