@@ -42,13 +42,13 @@ pipeline {
             stage('tf lint') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo docker container run --rm -i -v $(pwd):/data wata727/tflint'		
+                    sh 'sudo docker container run -t --rm -v $(pwd):/data wata727/tflint'		
                 }
             }
             stage('tf sec') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo docker container run --rm -i -v "$(pwd):/src" liamg/tfsec /src'
+                    sh 'sudo docker container run -t --rm -v "$(pwd):/src" liamg/tfsec /src'
                 }
             }
             stage('tf checkov') {
