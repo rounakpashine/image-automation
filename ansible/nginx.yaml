@@ -6,7 +6,9 @@
           yum:
             name: '*'
             state: latest
-        - name: install nginx
+        - name: install epel package 
+          command: amazon-linux-extras install epel -y
+        - name: install nginx        
           yum:
             name: nginx
             state: present
