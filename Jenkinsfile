@@ -54,7 +54,7 @@ pipeline {
             stage('tf checkov') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo docker container run --rm -it -v "$(pwd):/tf" bridgecrew/checkov /tf'
+                    sh 'sudo docker container run --rm -i -v "$(pwd):/tf" bridgecrew/checkov /tf'
                 }
             }                 
             stage('tf plan') {
