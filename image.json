@@ -23,7 +23,7 @@
        ]
     },  
     {
-      "type": "ansible-local",
+      "type": "ansible",
       "playbook_file": "ansible/nginx.yaml"
     },
     {
