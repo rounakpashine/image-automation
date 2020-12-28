@@ -13,15 +13,7 @@
     }
   ],
 
-  "provisioners": [
-    {
-      "type": "shell",
-      "inline": [
-	"sudo amazon-linux-extras install epel -y",
-	"sudo yum install python-pip -y",
-        "sudo pip install ansible"
-       ]
-    },  
+  "provisioners": [  
     {
       "type": "ansible",
       "playbook_file": "ansible/nginx.yaml"
