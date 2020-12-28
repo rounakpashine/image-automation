@@ -24,3 +24,7 @@
             state: directory
             mode: '777'
             recurse: yes
+        - name: copy index.html
+          copy:
+            src: index.html
+            dest: /usr/share/nginx/html/index.html
