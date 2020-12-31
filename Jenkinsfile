@@ -12,13 +12,13 @@ pipeline {
             stage('pkr inspect') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'packer inspect packer/image.json'
+                    sh 'sudo docker run -t --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json hashicorp/packer:latest inspect /mnt/image.json'
                 }
             }
             stage('pkr validate') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'sudo docker run -it --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json hashicorp/packer:latest inspect /mnt/image.json'
+                    sh 'sudo docker run -t --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json hashicorp/packer:latest validate /mnt/image.json'
                 }
             }                
             stage('pkr build') {
