@@ -26,6 +26,7 @@
       "type": "inspec",
       "profile": "https://github.com/dev-sec/linux-baseline",
       "inspec_env_vars": [ "CHEF_LICENSE=accept"]
+      "extra_arguments": [ "--sudo", "--reporter cli junit:results.xml", "json" ]
     },     
     {
       "type": "shell",
