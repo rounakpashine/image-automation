@@ -24,7 +24,7 @@
   },
     {
      "type": "shell",
-     "inline": "sudo python ./python/execute_aws_inspector.py"
+     "inline": "python execute_aws_inspector.py"
   },
     {
       "type": "shell",
