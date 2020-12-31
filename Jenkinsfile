@@ -24,7 +24,7 @@ pipeline {
             stage('pkr build') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'packer build packer/image.json'
+                    sh 'sudo docker run -t --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json hashicorp/packer:latest build /mnt/image.json'
                 }
             }
             stage('tf init') {
