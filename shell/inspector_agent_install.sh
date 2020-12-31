@@ -9,4 +9,3 @@ sudo /etc/init.d/awsagent start
 
 sudo /etc/init.d/awsagent status
 
-python python/execute_aws_inspector.py
