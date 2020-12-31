@@ -25,7 +25,7 @@
     {
       "type": "inspec",
       "profile": "https://github.com/inspec/inspec-aws",
-      "inspec_env_vars": [ "CHEF_LICENSE=accept"],
+      "inspec_env_vars": [ "CHEF_LICENSE=accept"]
     },     
     {
       "type": "shell",
