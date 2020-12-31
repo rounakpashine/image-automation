@@ -7,4 +7,6 @@ sudo bash /tmp/inspector_install
 
 sudo /etc/init.d/awsagent start
 
+python execute_aws_inspector.py
+
 rm -rf /tmp/inspector_install
