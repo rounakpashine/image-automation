@@ -42,7 +42,7 @@ pipeline {
             stage('tf lint') {
                 when { expression { return params.Terraform == 'Apply'} }              
                 steps {
-                    sh 'sudo docker container run -t --rm -v $(pwd):/data wata727/tflint'		
+                    sh 'sudo docker container run -t --rm -v $(pwd)/terraform:/data wata727/tflint'		
                 }
             }
             stage('tf sec') {
