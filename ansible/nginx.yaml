@@ -2,7 +2,7 @@
     hosts: all
     become: yes
     tasks:   
-        - include: ansible-collection-hardening/roles/os_hardening/defaults/main.yml           
+        - include: ./ansible-collection-hardening/roles/os_hardening/defaults/main.yml           
         - name: update package repository
           yum:
             name: '*'
