@@ -16,7 +16,10 @@
   "provisioners": [
     {
       "type": "shell-local",
-      "inline": ["git clone https://github.com/dev-sec/ansible-collection-hardening.git"]
+      "inline": [
+        "rm -rf ansible-collection-hardening"
+        "git clone https://github.com/dev-sec/ansible-collection-hardening.git"
+      ]
     },    
     {
       "type": "ansible",
