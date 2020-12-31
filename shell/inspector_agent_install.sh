@@ -10,7 +10,3 @@ sudo /etc/init.d/awsagent start
 sudo /etc/init.d/awsagent status
 
 python ./python/execute_aws_inspector.py
-
-sudo /etc/init.d/awsagent stop
-
-rm -rf /tmp/inspector_install
