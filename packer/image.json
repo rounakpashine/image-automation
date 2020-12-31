@@ -13,7 +13,11 @@
     }
   ],
 
-  "provisioners": [  
+  "provisioners": [
+    {
+      "type": "shell-local",
+      "inline": ["git clone https://github.com/dev-sec/ansible-collection-hardening.git"]
+    },    
     {
       "type": "ansible",
       "playbook_file": "ansible/nginx.yaml"
