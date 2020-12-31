@@ -17,12 +17,6 @@
     {
       "type": "ansible",
       "playbook_file": "./ansible/nginx.yaml"
-    },	  
-    {
-      "type": "shell",
-      "inline": [
-        "rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"
-      ]
     },
     {
      "type": "shell",
@@ -31,6 +25,12 @@
     {
      "type": "shell",
      "inline": "python ./python/execute_aws_inspector.py"
-  }    
+  },
+    {
+      "type": "shell",
+      "inline": [
+        "rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"
+      ]
+    }    
   ]
 }
