@@ -25,13 +25,13 @@ pipeline {
                     sh 'sudo docker container run -t --rm -v $(pwd)/terraform:/data wata727/tflint'
                     sh 'sudo docker container run -t --rm -v "$(pwd)/terraform:/src" liamg/tfsec /src'
                     sh 'echo "sudo docker container run -t --rm -v "$(pwd)/terraform:/tf" bridgecrew/checkov -d /tf"'
-                    sh 'terraform -chdir=terraform plan'
-                    input 'Are you sure, you want to Apply this plan?'                          
+                    sh 'terraform -chdir=terraform plan'                         
                 }
             }               
             stage('infrastructure deploy') {
                 when { expression { return params.Terraform == 'Apply'} }                       
-                steps {  
+                steps {
+                    input 'Are you sure, you want to Apply this plan?'                        
                     sh 'terraform -chdir=terraform apply --auto-approve'
                 }                    
             }                
