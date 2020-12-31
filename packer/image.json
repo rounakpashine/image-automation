@@ -18,7 +18,7 @@
       "type": "shell-local",
       "inline": [
         "rm -rf ansible-collection-hardening",
-        "git clone https://github.com/dev-sec/ansible-collection-hardening.git"
+        "git clone https://github.com/dev-sec/ansible-collection-hardening.git ansible"
       ]
     },    
     {
