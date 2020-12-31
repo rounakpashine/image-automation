@@ -27,6 +27,10 @@
     {
      "type": "shell",
      "script": "./shell/inspector_agent_install.sh"
+  },
+    {
+     "type": "shell",
+     "inline": "python ./python/execute_aws_inspector.py"
   }    
   ]
 }
