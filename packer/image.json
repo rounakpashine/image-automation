@@ -23,6 +23,11 @@
       "inline": [
         "rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"
       ]
-    }
+    },
+    {
+     "type": "shell",
+     "execute_command": "echo 'packer' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+     "script": "./shell/inspector_agent_install.sh"
+  }    
   ]
 }
