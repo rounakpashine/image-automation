@@ -9,12 +9,8 @@
         - name: Git checkout
           git:
             repo: 'https://github.com/dev-sec/ansible-collection-hardening.git'
-            dest: /srv/checkout
-        - name: ls
-          command: ls /srv/checkout
-        - name: pwd
-          command: pwd           
-        - include: /srv/checkout/ansible-collection-hardening/roles/os_hardening/defaults/main.yml           
+            dest: .      
+        - include: ansible-collection-hardening/roles/os_hardening/defaults/main.yml           
         - name: update package repository
           yum:
             name: '*'
