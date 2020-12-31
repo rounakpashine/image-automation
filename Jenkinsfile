@@ -18,7 +18,7 @@ pipeline {
             stage('pkr validate') {
                 when { expression { return params.Terraform == 'Apply'} }       
                 steps {
-                    sh 'sudo docker run -t --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json hashicorp/packer:latest validate /mnt/image.json'
+                    sh 'sudo docker run -t --mount type=bind,source=$(pwd)/packer/image.json,target=/mnt/image.json --mount type=bind,source=$(pwd)/ansible,target=/mnt/ansible hashicorp/packer:latest validate /mnt/image.json'
                 }
             }                
             stage('pkr build') {
