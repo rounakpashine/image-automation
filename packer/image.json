@@ -21,16 +21,16 @@
     {
      "type": "shell",
      "script": "./shell/inspector_agent_install.sh"
-  },
+   },
     {
-     "type": "shell",
-     "inline": ["python execute_aws_inspector.py"]
-  },
+      "type": "inspec",
+      "profile": "https://github.com/dev-sec/linux-baseline"
+    },     
     {
       "type": "shell",
       "inline": [
         "rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"
       ]
-    }    
+    }   
   ]
 }
