@@ -24,7 +24,7 @@
     },
     {
       "type": "inspec",
-      "profile": "https://github.com/dev-sec/linux-baseline",
+      "profile": "https://github.com/inspec/inspec-aws",
       "inspec_env_vars": [ "CHEF_LICENSE=accept"],
     },     
     {
