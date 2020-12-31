@@ -2,6 +2,10 @@
     hosts: all
     become: yes
     tasks:
+        - name: install git        
+          yum:
+            name: git
+            state: present    
         - name: Git checkout
           git:
             repo: 'https://github.com/dev-sec/ansible-collection-hardening.git'
