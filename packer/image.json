@@ -21,16 +21,15 @@
     {
      "type": "shell",
      "script": "./shell/inspector_agent_install.sh"
-   },
+    },
     {
       "type": "inspec",
-      "profile": "https://github.com/dev-sec/linux-baseline"
+      "profile": "https://github.com/dev-sec/linux-baseline",
+      "inspec_env_vars": [ "CHEF_LICENSE=accept"]
     },     
     {
       "type": "shell",
-      "inline": [
-        "rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"
-      ]
+      "inline": ["rm .ssh/authorized_keys ; sudo rm /root/.ssh/authorized_keys"]
     }   
   ]
 }
